@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.view.KeyEvent;
 import android.view.SurfaceHolder;
 
@@ -14,10 +15,17 @@ import game.view.GameView;
 
 public class LoadView extends GameView implements Runnable{
 
-    private Bitmap red,yellow;                            //红色和黄色进度条
-    private int x, y;                                     //进度条绘制坐标
+    private Bitmap red,yellow;                             //红色和黄色进度条
+    private int x, y;                                      //进度条绘制坐标
     private int loadImageValue = 78;                       //需要加载的图片数量
-    private float width;                                  //显示黄色进度条的可视宽度
+    private float width;                                   //显示黄色进度条的可视宽度
+
+    public static Typeface mFace;                          //定义字体对象
+    private int textSize = 16;                             //画笔的大小
+    //画笔的透明度，用数字表示
+    private int alpha[] = {255,255,255,255,255,255,255,255,255,255,230,210,190,170,150,130,
+            110,90,70,50,30,10,0,10,30,50,70,90,110,130,150,170,190,210,230};
+    private int index;                                     //alpha数组下标
 
     public LoadView(Context context)
     {
@@ -43,8 +51,12 @@ public class LoadView extends GameView implements Runnable{
 
         this.x = (LoadActivity.ScreenWidth - red.getWidth())/2;
         this.y =  LoadActivity.ScreenHeight - 30;
-        //计算每加载一张图片，矩形设置的可视区域的值
+        //计算每加载一张图片，黄色进度条的可视区域的值
         this.width = (float)yellow.getWidth()/loadImageValue;
+        //实例化自定义字体
+        mFace = Typeface.createFromAsset(getContext().getAssets(),"fonts/font.ttf");
+        paint.setTypeface(mFace);                          //设置绘制自定义字体
+        paint.setTextSize(textSize);                       //设置绘制画笔的大小
     }
 
 
@@ -74,8 +86,18 @@ public class LoadView extends GameView implements Runnable{
                     y + yellow.getHeight());
             canvas.drawBitmap(yellow, x, y, null);
             canvas.restore();
+
+            //设置字体的渐变效果
+            paint.setColor(Color.YELLOW);
+            paint.setAlpha(alpha[index++]);
+            if(index > alpha.length - 1)
+            {
+                index = 0;
+            }
+            //绘制字体
+            canvas.drawText("loading......", x, y-10, paint);
             //paint.setColor(Color.YELLOW);
-            //canvas.drawText(" " + LoadResource.ui.size(), 50, 50, paint);
+            //canvas.drawText("" + LoadResource.temp, 50, 50, paint);
             this.sh.unlockCanvasAndPost(canvas);
         }
     }

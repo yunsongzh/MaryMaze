@@ -89,7 +89,7 @@ public class LoadResource {
                         ("map/map" + i +".jpg"));
                 temp++;
 
-                //返回一张与屏幕大小相同的图片
+                //把背景图设置与屏幕大小相同
                 m = Image.FitTheScreenSizeImage(m, LoadActivity.ScreenWidth, LoadActivity
                         .ScreenHeight);
                 map.add(m);
