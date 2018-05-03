@@ -2,6 +2,7 @@ package com.zys.mary.menu;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
@@ -10,6 +11,7 @@ import com.zys.mary.R;
 import com.zys.mary.load.LoadActivity;
 import com.zys.mary.load.LoadResource;
 import com.zys.mary.load.LoadView;
+import com.zys.mary.options.OptionsActivity;
 
 import game.button.GameButton;
 import game.music.GameMediaPlayers;
@@ -116,11 +118,11 @@ public class MenuView extends GameView implements Runnable{
                 this.menuState = BUTTON;
                 break;
             case BUTTON:
-                if(this.StartGame.OnTouch(event.getX(), event.getY()))
-                {
+                if(this.StartGame.OnTouch(event.getX(), event.getY())) {
                 }
-                else if(this.Options.OnTouch(event.getX(), event.getY()))
-                {
+                else if(this.Options.OnTouch(event.getX(), event.getY())) {
+                    Intent i = new Intent(this.getContext(), OptionsActivity.class);
+                    this.getContext().startActivity(i);
                 }
                 else if(this.Exit.OnTouch(event.getX(), event.getY())) {
                     Activity a = (Activity) this.getContext();

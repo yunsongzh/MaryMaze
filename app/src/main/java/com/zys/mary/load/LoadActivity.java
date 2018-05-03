@@ -18,9 +18,6 @@ public class LoadActivity extends GameActivity implements Runnable{
         this.SetScreenToFull();                   //设置全屏
         this.GetScreenSize();                     //取得屏幕大小尺寸
 
-
-
-
         super.onCreate(savedInstanceState);
         //lView = new LoadView(this);
         setContentView(new LoadView(this));
