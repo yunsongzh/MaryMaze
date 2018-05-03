@@ -21,7 +21,7 @@ public class LoadView extends GameView implements Runnable{
     private float width;                                   //显示黄色进度条的可视宽度
 
     public static Typeface mFace;                          //定义字体对象
-    private int textSize = 16;                             //画笔的大小
+    private int textSize = 40;                             //画笔的大小
     //画笔的透明度，用数字表示
     private int alpha[] = {255,255,255,255,255,255,255,255,255,255,230,210,190,170,150,130,
             110,90,70,50,30,10,0,10,30,50,70,90,110,130,150,170,190,210,230};
@@ -54,7 +54,8 @@ public class LoadView extends GameView implements Runnable{
         //计算每加载一张图片，黄色进度条的可视区域的值
         this.width = (float)yellow.getWidth()/loadImageValue;
         //实例化自定义字体
-        mFace = Typeface.createFromAsset(getContext().getAssets(),"fonts/font.ttf");
+        mFace = Typeface.createFromAsset(getContext().getAssets(),
+                "fonts/font.ttf");
         paint.setTypeface(mFace);                          //设置绘制自定义字体
         paint.setTextSize(textSize);                       //设置绘制画笔的大小
     }
