@@ -39,7 +39,7 @@ public class MenuView extends GameView implements Runnable{
         super(context);
         //按钮初始化
         StartGame = new GameButton((LoadActivity.ScreenWidth - 100)/2,
-                LoadActivity.ScreenHeight/2 - 40, textSize,"Start_Game",
+                LoadActivity.ScreenHeight/2 - 40, textSize,"Start Game",
                 context, R.raw.button);
         Options   = new GameButton(StartGame.x, StartGame.y  + 60, textSize,
                 "Options",  context, R.raw.button);

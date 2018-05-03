@@ -91,8 +91,7 @@ public class OptionsActivity extends GameActivity implements
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event)
     {
-        if(keyCode == KeyEvent.KEYCODE_BACK)
-        {
+        if(keyCode == KeyEvent.KEYCODE_BACK) {
             this.finish();
         }
         return true;
