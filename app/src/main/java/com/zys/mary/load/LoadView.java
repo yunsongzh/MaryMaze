@@ -81,6 +81,9 @@ public class LoadView extends GameView implements Runnable{
         if(canvas != null)
         {
             canvas.drawColor(Color.BLACK);
+            //绘制加载界面的背景
+            //canvas.drawBitmap(LoadResource.map.get(3),0,0,null);
+
             canvas.drawBitmap(red, x, y, null);            //绘制红色进度条
             canvas.save();                                       //绘制黄色进度条
             canvas.clipRect(x, y, x + LoadResource.temp * width,
@@ -96,7 +99,7 @@ public class LoadView extends GameView implements Runnable{
                 index = 0;
             }
             //绘制字体
-            canvas.drawText("loading......", x, y-10, paint);
+            canvas.drawText("Loading......", x, y - 10, paint);
             //paint.setColor(Color.YELLOW);
             //canvas.drawText("" + LoadResource.temp, 50, 50, paint);
             this.sh.unlockCanvasAndPost(canvas);

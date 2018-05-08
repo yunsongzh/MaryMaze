@@ -11,6 +11,7 @@ import com.zys.mary.R;
 import com.zys.mary.load.LoadActivity;
 import com.zys.mary.load.LoadResource;
 import com.zys.mary.load.LoadView;
+import com.zys.mary.map.MapActivity;
 import com.zys.mary.options.OptionsActivity;
 
 import game.button.GameButton;
@@ -119,6 +120,8 @@ public class MenuView extends GameView implements Runnable{
                 break;
             case BUTTON:
                 if(this.StartGame.OnTouch(event.getX(), event.getY())) {
+                    Intent i = new Intent(this.getContext(), MapActivity.class);
+                    this.getContext().startActivity(i);
                 }
                 else if(this.Options.OnTouch(event.getX(), event.getY())) {
                     Intent i = new Intent(this.getContext(), OptionsActivity.class);

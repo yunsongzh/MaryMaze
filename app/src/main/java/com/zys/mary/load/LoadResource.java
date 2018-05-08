@@ -96,7 +96,7 @@ public class LoadResource {
             }
 
             //加载地图块图片
-            for(int i=1; i<=35; i++)
+            for(int i=1; i<=23; i++)
             {
                 tile.add(BitmapFactory.decodeStream(context.getAssets().open
                         ("tile/tile" + i + ".png")));
